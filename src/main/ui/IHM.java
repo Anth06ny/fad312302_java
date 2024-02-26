@@ -4,6 +4,8 @@ import main.beans.PartyBean;
 import main.beans.PlayerBean;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -93,12 +95,28 @@ public class IHM extends JPanel implements ActionListener {
 
                 jbRestart.setVisible(false);
 
+                jcbP1.setSelected(false);
+                jcbP2.setSelected(false);
+
             }
         });
 
 
         jcbP1 = new JCheckBox("Tricheur");
+        jcbP1.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                partyBean.getJ1().setCheater(jcbP1.isSelected());
+            }
+        });
+
         jcbP2 = new JCheckBox("Tricheur");
+        jcbP2.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                partyBean.getJ2().setCheater(jcbP2.isSelected());
+            }
+        });
         jlMessage = new JLabel("Le joueur 1 a gagn\u00E9");
         jlMessage.setText("");
 

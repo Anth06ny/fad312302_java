@@ -4,10 +4,22 @@ public class PlayerBean {
 
     private String name;
     private int score;
+
+    private boolean cheater;
+
     private CupBean cup = new CupBean();
 
     public PlayerBean(String name) {
         this.name = name;
+    }
+
+
+
+
+    public void setCheater(boolean cheater) {
+        this.cheater = cheater;
+
+        cup = new CupBean(cheater);
     }
 
     //Méthodes
@@ -20,6 +32,11 @@ public class PlayerBean {
     }
 
     //GETTER / SETTER
+
+    public boolean isCheater() {
+        return cheater;
+    }
+
     public String getName() {
         return name;
     }

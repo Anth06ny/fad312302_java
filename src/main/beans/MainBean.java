@@ -3,35 +3,29 @@ package main.beans;
 public class MainBean {
 
     public static void main(String[] args) {
+        LoadedDiceBean dp = new LoadedDiceBean(4);
+        System.out.println("La face pipée est : " + dp.getLoadedFace());
+        dp.roll();
+        System.out.println("Valeur obtenue : " + dp.getValue());
+        DiceBean d = dp;
+        System.out.println("Valeur obtenue : " + d.getValue());
+        //Vérifier qu'elle méthode roll sera appelée
+        d.roll();
 
-
-        PartyBean pb = new PartyBean("Toto", "tata");
-
-        for (int i = 0; i < 3; i++) {
-            pb.getJ1().roll();
-            if (pb.getJ1().getCup().getScoreDices() >= 7) {
-                pb.getJ1().add1Point();
-            }
-
-            pb.getJ2().roll();
-            if (pb.getJ2().getCup().getScoreDices() >= 7) {
-                pb.getJ2().add1Point();
-            }
-
-
-            pb.add1Round();
+        //20 lancées normaux
+        DiceBean d2 = new DiceBean();
+        for(int i=0; i<20; i++) {
+            d2.roll();
+            System.out.print(d2.getValue() + " ");
         }
+        System.out.println();
 
-
-        PlayerBean winner = pb.winner();
-        if(winner != null) {
-            System.out.print(winner.getName() + " a gagné : ");
+        //20 lancées pipées
+        d2 = new LoadedDiceBean(6);
+        for(int i=0; i<20; i++) {
+            d2.roll();
+            System.out.print(d2.getValue() + " ");
         }
-        else {
-            System.out.print("Egalité : ");
-        }
-
-        System.out.println(pb.getJ1().getScore() + " - " + pb.getJ2().getScore());
 
     }
 }

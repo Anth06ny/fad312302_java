@@ -8,7 +8,16 @@ public class CupBean {
 
     //Constructeur
     public CupBean() {
-       d1 = new DiceBean();
+        this(false);
+        //d1 = new DiceBean();
+    }
+
+    public CupBean(boolean cheat) {
+        if (cheat) {
+            d1 = new LoadedDiceBean(6);
+        } else {
+            d1 = new DiceBean();
+        }
     }
 
     //méthode

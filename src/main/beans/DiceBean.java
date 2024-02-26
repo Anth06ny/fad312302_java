@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class DiceBean {
 
-    private static Random random = new Random();
+    protected static Random random = new Random();
     //Attributs /field
-    private int value;
+    protected int value;
 
 
 
